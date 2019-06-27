@@ -6,6 +6,7 @@ target 'CallingApp' do
   use_frameworks!
 
   # Pods for CallingApp
+  pod 'Alamofire'
 
   target 'CallingAppTests' do
     inherit! :search_paths
