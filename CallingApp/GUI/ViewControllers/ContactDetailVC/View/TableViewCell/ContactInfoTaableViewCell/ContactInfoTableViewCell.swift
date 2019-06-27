@@ -8,8 +8,12 @@
 
 import UIKit
 
+let kContactInfoTableViewCell = "ContactInfoTableViewCell"
 class ContactInfoTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var lcWidthTitleLbl: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +25,8 @@ class ContactInfoTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func makeCellEditable(editable: Bool) {
+        self.textField.isUserInteractionEnabled = editable
+        self.lcWidthTitleLbl.constant = editable ? 80 : 50
+    }
 }

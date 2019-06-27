@@ -1,5 +1,5 @@
 //
-//  ContaclDetailView.swift
+//  ContactDetailView.swift
 //  CallingApp
 //
 //  Created Manoj Saini on 6/26/19.
@@ -9,15 +9,24 @@
 
 import UIKit
 
-class ContaclDetailView: UIViewController, ContaclDetailViewProtocol {
+class ContactDetailView: UIViewController, ContactDetailViewProtocol {
 
-	var presenter: ContaclDetailPresenterProtocol?
-
+	var presenter: ContactDetailPresenterProtocol?
+    var contact : ContactModel!    
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    @IBOutlet weak var tableView: UITableView!{
+        didSet {
+            tableView?.register(UINib(nibName: kProfileTableViewCell, bundle: nil), forCellReuseIdentifier: kProfileTableViewCell)
+            tableView?.register(UINib(nibName: kContactInfoTableViewCell, bundle: nil), forCellReuseIdentifier: kContactInfoTableViewCell)
+            tableView.tableFooterView = UIView()
+        }
+    }
     // MARK: - View Life Cycle Methods
 	override func viewDidLoad() {
         super.viewDidLoad()
+        self.getContactInfo()
     }
-    
+       
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
@@ -32,5 +41,16 @@ class ContaclDetailView: UIViewController, ContaclDetailViewProtocol {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+    
+    private func getContactInfo(){
+        self.loader.startAnimating()
+        self.presenter?.getContactInfo(forContact: "\(self.contact!.id ?? 0)", completion: { (contactInfo) in
+            if contactInfo != nil {
+                self.contact = contactInfo
+            }
+            self.tableView.reloadData()
+            self.loader.stopAnimating()
+        })
     }
 }

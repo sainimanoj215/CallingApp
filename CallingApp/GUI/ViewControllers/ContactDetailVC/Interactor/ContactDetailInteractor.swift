@@ -1,5 +1,5 @@
 //
-//  ContaclDetailInteractor.swift
+//  ContactDetailInteractor.swift
 //  CallingApp
 //
 //  Created Manoj Saini on 6/26/19.
@@ -9,21 +9,26 @@
 
 import UIKit
 
-class ContaclDetailInteractor: ContaclDetailInteractorInputProtocol,
-    ContaclDetailInteractorOutputProtocol{
+class ContactDetailInteractor: ContactDetailInteractorInputProtocol,
+    ContactDetailInteractorOutputProtocol{
 
-    var presenter: ContaclDetailPresenterProtocol?
-    var APIDataManager: ContaclDetailAPIDataManagerInputProtocol?
-    var localDataManager: ContaclDetailLocalDataManagerInputProtocol?
+    var presenter: ContactDetailPresenterProtocol?
+    var APIDataManager: ContactDetailAPIDataManagerInputProtocol?
+    var localDataManager: ContactDetailLocalDataManagerInputProtocol?
     
     init() {
         // TODO: USE CUSTOM INITIALIZATION IF YOU WANT TO USE DEPENDENCY INJECTION
         // http://ilya.puchka.me/dependency-injection-in-swift/
-        APIDataManager = ContaclDetailAPIDataManager()
-        localDataManager = ContaclDetailLocalDataManager()
+        APIDataManager = ContactDetailAPIDataManager()
+        localDataManager = ContactDetailLocalDataManager()
     }
     
     /**
      * Methods for communication PRESENTER -> INTERACTOR
      */
+    func getContactInfo(forContact: String, completion:@escaping(_ results: ContactModel?) -> ()){
+        APIDataManager?.getContactInfo(forContact: forContact, completion: { (contact) in
+            completion(contact)
+        })
+    }
 }

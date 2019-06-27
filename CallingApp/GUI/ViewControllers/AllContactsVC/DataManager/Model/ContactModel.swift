@@ -1,5 +1,5 @@
 //
-//  Contact.swift
+//  ContactModel.swift
 //  CallingApp
 //
 //  Created Manoj Saini on 6/26/19.
@@ -10,17 +10,21 @@
 import Foundation
 
 
-class Contact : NSObject, NSCoding{
+class ContactModel : NSObject, NSCoding{
 
-    var createdAt : String!
-    var email : String!
-    var favorite : Bool!
-    var firstName : String!
-    var id : Int!
-    var lastName : String!
-    var phoneNumber : String!
-    var profilePic : String!
-    var updatedAt : String!
+    var createdAt : String?
+    var email : String?
+    var favorite : Bool?
+    var firstName : String?
+    var id : Int?
+    var lastName : String?
+    var phoneNumber : String?
+    var profilePic : String?
+    var updatedAt : String?
+    
+    override init() {
+        super.init()
+    }
 
     init(fromDictionary dictionary: [String:Any]){
         createdAt = dictionary["created_at"] as? String
@@ -32,6 +36,17 @@ class Contact : NSObject, NSCoding{
         phoneNumber = dictionary["phone_number"] as? String
         profilePic = dictionary["profile_pic"] as? String
         updatedAt = dictionary["updated_at"] as? String
+    }
+    
+    class func PopulateArray(array: [[String:Any]]) -> [ContactModel]
+    {
+        var result:[ContactModel] = []
+        for item in array
+        {
+            let newItem = ContactModel.init(fromDictionary: item)
+            result.append(newItem)
+        }
+        return result
     }
     
     func toDictionary() -> [String:Any]
@@ -109,5 +124,9 @@ class Contact : NSObject, NSCoding{
         if updatedAt != nil{
             aCoder.encode(updatedAt, forKey: "updated_at")
         }
+    }
+    
+    func getFullName() -> String {
+        return (self.firstName ?? "") + (self.lastName ?? "")
     }
 }

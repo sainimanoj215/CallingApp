@@ -19,10 +19,9 @@ class AllContactsWireframe: AllContactsWireframeProtocol {
         self.view = AllContactsView.instantiate(fromAppStoryboard: .AllContacts)
         let interactor = AllContactsInteractor()
         let presenter = AllContactsPresenter(interface: view, interactor: interactor, wireframe: self)
-        
         view.presenter = presenter
         interactor.presenter = presenter
-
+        rootWireframe = RootWireframe()
     }
 }
 
@@ -39,5 +38,10 @@ extension AllContactsWireframe {
     // MARK: LoginWireframeProtocol
     func presentAllContactsModule(fromWindow window: UIWindow) {
         self.rootWireframe?.showRootViewController(self.view, inWindow: window)
+    }
+    
+    func showContactDetail(_ forContact: ContactModel) {
+        let contactDetail = ContactDetailWireframe()
+        contactDetail.showContactDetailModule(fromNavView: self.view.navigationController!, contact: forContact)
     }
 }

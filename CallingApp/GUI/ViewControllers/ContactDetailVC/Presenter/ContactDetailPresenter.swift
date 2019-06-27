@@ -1,5 +1,5 @@
 //
-//  ContaclDetailPresenter.swift
+//  ContactDetailPresenter.swift
 //  CallingApp
 //
 //  Created Manoj Saini on 6/26/19.
@@ -9,13 +9,13 @@
 
 import UIKit
 
-class ContaclDetailPresenter: ContaclDetailPresenterProtocol {
+class ContactDetailPresenter: ContactDetailPresenterProtocol {
 
-    weak private var view: ContaclDetailViewProtocol?
-    private let interactor: ContaclDetailInteractorInputProtocol
-    private let wireframe: ContaclDetailWireframeProtocol
+    weak private var view: ContactDetailViewProtocol?
+    private let interactor: ContactDetailInteractorInputProtocol
+    private let wireframe: ContactDetailWireframeProtocol
 
-    init(interface: ContaclDetailView, interactor: ContaclDetailInteractorInputProtocol, wireframe: ContaclDetailWireframeProtocol) {
+    init(interface: ContactDetailView, interactor: ContactDetailInteractorInputProtocol, wireframe: ContactDetailWireframeProtocol) {
         self.view = interface
         self.interactor = interactor
         self.wireframe = wireframe
@@ -23,4 +23,9 @@ class ContaclDetailPresenter: ContaclDetailPresenterProtocol {
         self.interactor.presenter = self
     }
 
+    func getContactInfo(forContact: String, completion:@escaping(_ results: ContactModel?) -> ()){
+        interactor.getContactInfo(forContact: forContact) { (contactInfo) in
+            completion(contactInfo)
+        }
+    }
 }

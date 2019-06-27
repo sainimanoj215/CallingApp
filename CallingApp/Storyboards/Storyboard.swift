@@ -11,6 +11,8 @@ import Foundation
 
 public enum Storyboard : String {
     case AllContacts = "AllContacts"
+    case ContactDetail = "ContactDetail"
+    
 }
 
 

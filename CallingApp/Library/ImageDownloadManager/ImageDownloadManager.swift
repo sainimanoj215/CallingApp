@@ -1,9 +1,10 @@
 //
 //  ImageDownloadManager.swift
-//  ImageSearch
+//  CallingApp
 //
-//  Created Manoj Saini on 6/19/19.
+//  Created Manoj Saini on 6/26/19.
 //  Copyright © 2019 manoj. All rights reserved.
+//
 //
 
 import Foundation
@@ -22,8 +23,8 @@ final class ImageDownloadManager {
     static let shared = ImageDownloadManager()
     private init () {}
     
-    func downloadImage(_ flickrPhoto: FlickrPhoto, indexPath: IndexPath?, size: String = "t", handler: @escaping ImageDownloadHandler) {
-        guard let url = flickrPhoto.flickrImageURL(size) else {
+    func downloadImage(imageUrl: String, indexPath: IndexPath?, handler: @escaping ImageDownloadHandler) {
+        guard let url = URL.init(string: imageUrl) else {
             return
         }
         if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) {
@@ -47,8 +48,8 @@ final class ImageDownloadManager {
         }
     }
     
-    func slowDownImageDownloadTaskfor (_ flickrPhoto: FlickrPhoto) {
-        guard let url = flickrPhoto.flickrImageURL() else {
+    func slowDownImageDownloadTaskfor (imageUrl: String) {
+        guard let url = URL.init(string: imageUrl) else {
             return
         }
         if let operations = (imageDownloadQueue.operations as? [ImgDownloadOperation])?.filter({$0.imageUrl.absoluteString == url.absoluteString && $0.isFinished == false && $0.isExecuting == true }), let operation = operations.first {

@@ -1,5 +1,5 @@
 //
-//  ContaclDetailProtocols.swift
+//  ContactDetailProtocols.swift
 //  CallingApp
 //
 //  Created Manoj Saini on 6/26/19.
@@ -12,19 +12,19 @@ import UIKit
 
 
 //MARK: View -
-protocol ContaclDetailViewProtocol: class {
-    var presenter: ContaclDetailPresenterProtocol?  { get set }
+protocol ContactDetailViewProtocol: class {
+    var presenter: ContactDetailPresenterProtocol?  { get set }
     /**
      * Add here your methods for communication PRESENTER -> VIEW
      */
 }
 
 //MARK: Wireframe -
-protocol ContaclDetailWireframeProtocol: class {
+protocol ContactDetailWireframeProtocol: class {
     var rootWireframe: RootWireframe? { get set }
-    func presentContaclDetailModule(fromWindow window: UIWindow)
-    func presentContaclDetailModule(fromNavView view: UINavigationController)
-    func presentContaclDetailModule(fromView view: UIViewController)
+    func presentContactDetailModule(fromWindow window: UIWindow)
+    func presentContactDetailModule(fromNavView view: UINavigationController)
+    func presentContactDetailModule(fromView view: UIViewController)
     /**
      * Add here your methods for communication PRESENTER -> WIREFRAME
      */
@@ -32,27 +32,28 @@ protocol ContaclDetailWireframeProtocol: class {
 }
 
 //MARK: Presenter -
-protocol ContaclDetailPresenterProtocol: class {
+protocol ContactDetailPresenterProtocol: class {
     /**
      * Add here your methods for communication VIEW -> PROTOCOL
      */
-
+    func getContactInfo(forContact: String, completion:@escaping(_ results: ContactModel?) -> ())
 }
 
 //MARK: Interactor -
-protocol ContaclDetailInteractorInputProtocol: class {
+protocol ContactDetailInteractorInputProtocol: class {
     
-    var presenter: ContaclDetailPresenterProtocol?  { get set }
-    var APIDataManager: ContaclDetailAPIDataManagerInputProtocol? { get set }
-    var localDataManager: ContaclDetailLocalDataManagerInputProtocol? { get set }
+    var presenter: ContactDetailPresenterProtocol?  { get set }
+    var APIDataManager: ContactDetailAPIDataManagerInputProtocol? { get set }
+    var localDataManager: ContactDetailLocalDataManagerInputProtocol? { get set }
     
     /**
      * Add here your methods for communication PRESENTER -> INTERACTOR
      */
+    func getContactInfo(forContact: String, completion:@escaping(_ results: ContactModel?) -> ())
 }
-protocol ContaclDetailInteractorOutputProtocol: class {
+protocol ContactDetailInteractorOutputProtocol: class {
     
-    var presenter: ContaclDetailPresenterProtocol?  { get set }
+    var presenter: ContactDetailPresenterProtocol?  { get set }
     /**
      * Add here your methods for communication INTERACTOR -> PRESENTER
      */
@@ -62,7 +63,7 @@ protocol ContaclDetailInteractorOutputProtocol: class {
 
 
 //MARK: - DataManager -
-protocol ContaclDetailDataManagerInputProtocol: class {
+protocol ContactDetailDataManagerInputProtocol: class {
     /**
      * Add here your methods for communication INTERACTOR -> DATAMANAGER
      */
@@ -70,15 +71,16 @@ protocol ContaclDetailDataManagerInputProtocol: class {
 }
 
 //MARK: API -
-protocol ContaclDetailAPIDataManagerInputProtocol: class {
+protocol ContactDetailAPIDataManagerInputProtocol: class {
     /**
      * Add here your methods for communication INTERACTOR -> APIDATAMANAGER
      */
     // Data fetch functions from server
+    func getContactInfo(forContact: String, completion:@escaping(_ results: ContactModel?) -> ())
 }
 
 //MARK: Local -
-protocol ContaclDetailLocalDataManagerInputProtocol: class {
+protocol ContactDetailLocalDataManagerInputProtocol: class {
     /**
      * Add here your methods for communication INTERACTOR -> LOCALDATAMANAGER
      */

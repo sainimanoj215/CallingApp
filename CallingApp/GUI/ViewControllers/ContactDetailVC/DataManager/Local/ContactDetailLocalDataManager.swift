@@ -1,5 +1,5 @@
 //
-//  ContaclDetailLocalDataManager.swift
+//  ContactDetailLocalDataManager.swift
 //  CallingApp
 //
 //  Created Manoj Saini on 6/26/19.
@@ -9,7 +9,7 @@
 
 import UIKit
 
-class ContaclDetailLocalDataManager: ContaclDetailLocalDataManagerInputProtocol {
+class ContactDetailLocalDataManager: ContactDetailLocalDataManagerInputProtocol {
 
     init() {}
     

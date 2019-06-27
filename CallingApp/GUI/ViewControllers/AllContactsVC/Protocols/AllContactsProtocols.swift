@@ -28,7 +28,7 @@ protocol AllContactsWireframeProtocol: class {
     /**
      * Add here your methods for communication PRESENTER -> WIREFRAME
      */
-    
+    func showContactDetail(_ forContact: ContactModel)
 }
 
 //MARK: Presenter -
@@ -36,7 +36,8 @@ protocol AllContactsPresenterProtocol: class {
     /**
      * Add here your methods for communication VIEW -> PROTOCOL
      */
-
+    func getAllContacts(completion:@escaping(_ results: [String:[ContactModel]]) -> ())
+    func showContactDetail(_ forContact: ContactModel)
 }
 
 //MARK: Interactor -
@@ -49,6 +50,7 @@ protocol AllContactsInteractorInputProtocol: class {
     /**
      * Add here your methods for communication PRESENTER -> INTERACTOR
      */
+    func getAllContacts(completion:@escaping(_ results: [String:[ContactModel]]) -> ())
 }
 protocol AllContactsInteractorOutputProtocol: class {
     
@@ -75,6 +77,8 @@ protocol AllContactsAPIDataManagerInputProtocol: class {
      * Add here your methods for communication INTERACTOR -> APIDATAMANAGER
      */
     // Data fetch functions from server
+    
+    func getAllContacts(completion:@escaping(_ results: [ContactModel]) -> ())
 }
 
 //MARK: Local -

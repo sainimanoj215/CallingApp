@@ -20,7 +20,7 @@ class RootWireframe {
     ///   - inWindow: UIWindow as app current window
     
     func showRootViewController(_ viewController: UIViewController, inWindow: UIWindow) {
-        var navigationController : UINavigationController!
+        let navigationController = getNavigationController()
         navigationController.viewControllers = [viewController]
         inWindow.rootViewController = navigationController
         inWindow.makeKeyAndVisible()
@@ -32,6 +32,7 @@ class RootWireframe {
     private func getNavigationController() -> UINavigationController {
         let navigationController = UINavigationController()
         navigationController.navigationBar.isHidden = false
+        navigationController.navigationBar.tintColor = UIColor.colorBrandBlue
         return navigationController
     }
     

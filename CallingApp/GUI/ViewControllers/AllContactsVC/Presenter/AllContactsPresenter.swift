@@ -23,4 +23,13 @@ class AllContactsPresenter: AllContactsPresenterProtocol {
         self.interactor.presenter = self
     }
 
+    func getAllContacts(completion: @escaping ([String:[ContactModel]]) -> ()) {
+        interactor.getAllContacts { (contacts) in
+            completion(contacts)
+        }
+    }
+    
+    func showContactDetail(_ forContact: ContactModel) {
+        wireframe.showContactDetail(forContact)
+    }
 }
