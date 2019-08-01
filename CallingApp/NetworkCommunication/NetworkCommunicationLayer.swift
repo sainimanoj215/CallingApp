@@ -50,7 +50,7 @@ class NetworkCommunicationLayer: NSObject {
         }
         Alamofire.request(finalURL, method: .post, parameters: finalDict, encoding: URLEncoding.default, headers:nil) .responseJSON(completionHandler: { (response) in
             if response.result.isSuccess {
-                let resp = response.data!
+                let resp = response.value
                 responseBlock(resp,nil,response.result.isSuccess)
             }
             else {
@@ -72,7 +72,7 @@ class NetworkCommunicationLayer: NSObject {
         }
         Alamofire.request(finalURL, method: .put, parameters: finalDict, encoding: JSONEncoding.default, headers:nil) .responseJSON(completionHandler: { (response) in
             if response.result.isSuccess {
-                let resp = response.data!
+                let resp = response.value
                 responseBlock(resp,nil,response.result.isSuccess)
             }
             else {
@@ -94,7 +94,7 @@ class NetworkCommunicationLayer: NSObject {
         }
         Alamofire.request(finalURL, method: .delete, parameters: finalDict, encoding: URLEncoding.default, headers:nil) .responseJSON(completionHandler: { (response) in
             if response.result.isSuccess {
-                let resp = response.data!
+                let resp = response.value
                 responseBlock(resp,nil,response.result.isSuccess)
             }
             else {
@@ -135,7 +135,7 @@ class NetworkCommunicationLayer: NSObject {
                 })
                 upload.responseJSON { (response) in
                     if response.result.isSuccess {
-                        let resp = response.data!
+                        let resp = response.value
                         responseBlock(resp,nil,response.result.isSuccess)
                     }
                     else {

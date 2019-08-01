@@ -10,7 +10,6 @@
 import UIKit
 
 class ContactDetailPresenter: ContactDetailPresenterProtocol {
-
     weak private var view: ContactDetailViewProtocol?
     private let interactor: ContactDetailInteractorInputProtocol
     private let wireframe: ContactDetailWireframeProtocol
@@ -27,5 +26,17 @@ class ContactDetailPresenter: ContactDetailPresenterProtocol {
         interactor.getContactInfo(forContact: forContact) { (contactInfo) in
             completion(contactInfo)
         }
+    }
+    
+    func addToFavorite(contact: ContactModel){
+        self.interactor.addToFavorite(contact: contact)
+    }
+    
+    func createContact(contactParam: NSMutableDictionary, completion:@escaping(_ results: ContactModel?) -> ()){
+        self.interactor.createContact(contactParam: contactParam, completion: completion)
+    }
+    
+    func editContact(contactId: String, param: NSMutableDictionary, completion:@escaping(_ results: ContactModel?) -> ()){
+        self.interactor.editContact(contactId: contactId, param: param, completion: completion)
     }
 }

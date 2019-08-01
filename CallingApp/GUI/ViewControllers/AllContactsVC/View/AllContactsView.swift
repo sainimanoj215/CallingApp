@@ -71,4 +71,9 @@ class AllContactsView: UIViewController, AllContactsViewProtocol {
             self.loader.stopAnimating()
         })
     }
+    
+    
+    @IBAction func didTapAddNewContact(_ sender: Any) {
+        self.presenter?.showContactDetail(ContactModel(), addNewContact: true)
+    }
 }

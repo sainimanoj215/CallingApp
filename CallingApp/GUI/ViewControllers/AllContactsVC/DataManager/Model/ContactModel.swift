@@ -127,6 +127,13 @@ class ContactModel : NSObject, NSCoding{
     }
     
     func getFullName() -> String {
-        return (self.firstName ?? "") + (self.lastName ?? "")
+        return (self.firstName ?? "") + " " + (self.lastName ?? "")
+    }
+    
+    func getProfilePicUrl() -> String {
+        if self.profilePic == "/images/missing.png" {
+            return (baseURL() + (self.profilePic ?? ""))
+        }
+        return (self.profilePic ?? "")
     }
 }

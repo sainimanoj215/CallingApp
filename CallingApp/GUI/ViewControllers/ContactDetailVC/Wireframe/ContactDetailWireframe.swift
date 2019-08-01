@@ -41,9 +41,10 @@ extension ContactDetailWireframe {
         self.rootWireframe?.showRootViewController(self.view, inWindow: window)
     }
     
-    func showContactDetailModule(fromNavView view: UINavigationController, contact: ContactModel) {
+    func showContactDetailModule(fromNavView view: UINavigationController, contact: ContactModel, addNewContact: Bool) {
         // Push Code
         self.view.contact = contact
+        self.view.addNewContact = addNewContact
         self.presentContactDetailModule(fromNavView: view)
     }
 }

@@ -34,7 +34,7 @@ extension AllContactsView : UITableViewDataSource {
         let index = self.allContactsKeyArray[indexPath.section]
         let contact = self.allContactsArray[index]![indexPath.row]
         (cell as! ContactTableViewCell).contactImageView.image = #imageLiteral(resourceName: "placeholder_photo")
-        ImageDownloadManager.shared.downloadImage(imageUrl: (baseURL() + (contact.profilePic ?? "")), indexPath: indexPath) { (image, url, indexPathh, error) in
+        ImageDownloadManager.shared.downloadImage(imageUrl: contact.getProfilePicUrl(), indexPath: indexPath) { (image, url, indexPathh, error) in
             if let indexPathNew = indexPathh, indexPathNew == indexPath {
                 DispatchQueue.main.async {
                     (cell as! ContactTableViewCell).contactImageView.image = image
@@ -46,7 +46,7 @@ extension AllContactsView : UITableViewDataSource {
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let index = self.allContactsKeyArray[indexPath.section]
         let contact = self.allContactsArray[index]![indexPath.row]
-        ImageDownloadManager.shared.slowDownImageDownloadTaskfor(imageUrl: (baseURL() + (contact.profilePic ?? "")))
+        ImageDownloadManager.shared.slowDownImageDownloadTaskfor(imageUrl: contact.getProfilePicUrl())
     }
 }
 
@@ -66,6 +66,6 @@ extension AllContactsView : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = self.allContactsKeyArray[indexPath.section]
         let contact = self.allContactsArray[index]![indexPath.row]
-        self.presenter?.showContactDetail(contact)
+        self.presenter?.showContactDetail(contact, addNewContact: false)
     }
 }

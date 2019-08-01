@@ -75,7 +75,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Contact" id="Fhn-jD-cWA">
                         <barButtonItem key="leftBarButtonItem" title="Groups" id="6Lv-7v-HMh"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Bny-Te-pd1"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Bny-Te-pd1">
+                            <connections>
+                                <action selector="didTapAddNewContact:" destination="BYZ-38-t0r" id="1F5-S6-iCT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="alphaCollectionView" destination="pLX-CR-yLI" id="rmo-Dy-Z8F"/>

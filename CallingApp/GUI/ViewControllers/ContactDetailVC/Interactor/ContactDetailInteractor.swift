@@ -31,4 +31,16 @@ class ContactDetailInteractor: ContactDetailInteractorInputProtocol,
             completion(contact)
         })
     }
+    
+    func addToFavorite(contact: ContactModel){
+        APIDataManager?.addToFavorite(contact: contact)
+    }
+    
+    func createContact(contactParam: NSMutableDictionary, completion:@escaping(_ results: ContactModel?) -> ()){
+        APIDataManager?.createContact(contactParam: contactParam, completion: completion)
+    }
+    
+    func editContact(contactId: String, param: NSMutableDictionary, completion:@escaping(_ results: ContactModel?) -> ()){
+        APIDataManager?.editContact(contactId: contactId, param: param, completion: completion)
+    }
 }

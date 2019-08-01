@@ -11,7 +11,6 @@ import Foundation
 import UIKit
 
 class ImgDownloadOperation: Operation {
-    var downloadHandler: ImageDownloadHandler?
     var imageUrl: URL!
     private var indexPath: IndexPath?
    
@@ -66,15 +65,14 @@ class ImgDownloadOperation: Operation {
             return
         }
         self.executing(true)
-        self.downloadImageFromUrl()
     }
     
-    func downloadImageFromUrl() {
+    func downloadImageFromUrl(_ complition:@escaping ImageDownloadHandler) {
         let newSession = URLSession.shared
         let downloadTask = newSession.downloadTask(with: self.imageUrl) { (location, response, error) in
         if let locationUrl = location, let data = try? Data(contentsOf: locationUrl){
              let image = UIImage(data: data)
-            self.downloadHandler?(image,self.imageUrl, self.indexPath,error)
+            complition(image,self.imageUrl, self.indexPath,error)
           }
           self.finish(true)
           self.executing(false)

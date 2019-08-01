@@ -40,8 +40,8 @@ extension AllContactsWireframe {
         self.rootWireframe?.showRootViewController(self.view, inWindow: window)
     }
     
-    func showContactDetail(_ forContact: ContactModel) {
+    func showContactDetail(_ forContact: ContactModel, addNewContact : Bool) {
         let contactDetail = ContactDetailWireframe()
-        contactDetail.showContactDetailModule(fromNavView: self.view.navigationController!, contact: forContact)
+        contactDetail.showContactDetailModule(fromNavView: self.view.navigationController!, contact: forContact, addNewContact:  addNewContact)
     }
 }

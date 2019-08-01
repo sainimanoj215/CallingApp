@@ -29,7 +29,7 @@ class AllContactsPresenter: AllContactsPresenterProtocol {
         }
     }
     
-    func showContactDetail(_ forContact: ContactModel) {
-        wireframe.showContactDetail(forContact)
+    func showContactDetail(_ forContact: ContactModel, addNewContact : Bool) {
+        wireframe.showContactDetail(forContact, addNewContact:  addNewContact)
     }
 }

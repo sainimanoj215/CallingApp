@@ -51,3 +51,30 @@ extension CAGradientLayer {
         
     }
 }
+
+// MARK:- STRINGS EXTENSION
+public extension String {
+    
+    func isEmptyString() -> Bool {
+        if self.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 {
+            return true
+        }
+        return false
+    }
+    func isValidEmail() -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        
+        if let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx) as NSPredicate? {
+            return emailTest.evaluate(with: self)
+        }
+        return false
+    }
+    
+    func isValidMobile() -> Bool {
+        let phoneRegEx = "^[0-9]{6,15}"
+        if let phoneTest = NSPredicate(format:"SELF MATCHES %@", phoneRegEx) as NSPredicate? {
+            return phoneTest.evaluate(with: self)
+        }
+        return false
+    }
+}

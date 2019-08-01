@@ -57,6 +57,8 @@
 		24516A7522C47FD2005F9FCB /* ContactInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24516A7322C47FD2005F9FCB /* ContactInfoTableViewCell.xib */; };
 		24516A7722C48587005F9FCB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24516A7622C48587005F9FCB /* Extensions.swift */; };
 		24516A7922C48688005F9FCB /* ContactDetailView+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24516A7822C48688005F9FCB /* ContactDetailView+TableView.swift */; };
+		2454971322F0296D00A1B689 /* AddProfilePicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2454971122F0296D00A1B689 /* AddProfilePicTableViewCell.swift */; };
+		2454971422F0296D00A1B689 /* AddProfilePicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2454971222F0296D00A1B689 /* AddProfilePicTableViewCell.xib */; };
 		C7E01D05C8CF571D017615D4 /* Pods_CallingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783A37AE678A2624E4F39C52 /* Pods_CallingApp.framework */; };
 		EBF7BC03C40566E5F8ACBB69 /* Pods_CallingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 537910EAAC1B06B24C19D47F /* Pods_CallingAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -136,6 +138,8 @@
 		24516A7322C47FD2005F9FCB /* ContactInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactInfoTableViewCell.xib; sourceTree = "<group>"; };
 		24516A7622C48587005F9FCB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		24516A7822C48688005F9FCB /* ContactDetailView+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactDetailView+TableView.swift"; sourceTree = "<group>"; };
+		2454971122F0296D00A1B689 /* AddProfilePicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfilePicTableViewCell.swift; sourceTree = "<group>"; };
+		2454971222F0296D00A1B689 /* AddProfilePicTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddProfilePicTableViewCell.xib; sourceTree = "<group>"; };
 		537910EAAC1B06B24C19D47F /* Pods_CallingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CallingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB26C34EA34F60EF74F8CED /* Pods-CallingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CallingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CallingApp/Pods-CallingApp.release.xcconfig"; sourceTree = "<group>"; };
 		783A37AE678A2624E4F39C52 /* Pods_CallingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CallingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -540,6 +544,7 @@
 		24516A6B22C47E3E005F9FCB /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				2454971022F0294100A1B689 /* AddProfilePicTableViewCell */,
 				24516A7122C47FB4005F9FCB /* ContactInfoTaableViewCell */,
 				24516A6C22C47E4C005F9FCB /* ProfileTableViewCell */,
 			);
@@ -562,6 +567,15 @@
 				24516A7322C47FD2005F9FCB /* ContactInfoTableViewCell.xib */,
 			);
 			path = ContactInfoTaableViewCell;
+			sourceTree = "<group>";
+		};
+		2454971022F0294100A1B689 /* AddProfilePicTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2454971122F0296D00A1B689 /* AddProfilePicTableViewCell.swift */,
+				2454971222F0296D00A1B689 /* AddProfilePicTableViewCell.xib */,
+			);
+			path = AddProfilePicTableViewCell;
 			sourceTree = "<group>";
 		};
 		8F39A68A17D028CFB6713EE3 /* Frameworks */ = {
@@ -699,6 +713,7 @@
 				2451695D22C34AD4005F9FCB /* Assets.xcassets in Resources */,
 				245169F422C37657005F9FCB /* ContactDetail.storyboard in Resources */,
 				245169E622C35BCB005F9FCB /* ContactTableViewCell.xib in Resources */,
+				2454971422F0296D00A1B689 /* AddProfilePicTableViewCell.xib in Resources */,
 				245169EB22C37347005F9FCB /* ContactTableHeaderView.xib in Resources */,
 				24516A7522C47FD2005F9FCB /* ContactInfoTableViewCell.xib in Resources */,
 				245169D022C353B1005F9FCB /* LaunchScreen.storyboard in Resources */,
@@ -814,6 +829,7 @@
 				2451695322C34AD3005F9FCB /* AppDelegate.swift in Sources */,
 				245169C822C34C07005F9FCB /* AllContactsProtocols.swift in Sources */,
 				24516A4D22C376C2005F9FCB /* ContactDetailAPIDataManager.swift in Sources */,
+				2454971322F0296D00A1B689 /* AddProfilePicTableViewCell.swift in Sources */,
 				2451695B22C34AD3005F9FCB /* CallingApp.xcdatamodeld in Sources */,
 				24516A4E22C376C2005F9FCB /* ContaclDetailView.swift in Sources */,
 				24516A6122C3BF84005F9FCB /* Constant.swift in Sources */,

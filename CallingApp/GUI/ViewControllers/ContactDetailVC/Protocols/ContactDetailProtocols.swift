@@ -28,7 +28,7 @@ protocol ContactDetailWireframeProtocol: class {
     /**
      * Add here your methods for communication PRESENTER -> WIREFRAME
      */
-    
+    func showContactDetailModule(fromNavView view: UINavigationController, contact: ContactModel, addNewContact: Bool)
 }
 
 //MARK: Presenter -
@@ -37,6 +37,9 @@ protocol ContactDetailPresenterProtocol: class {
      * Add here your methods for communication VIEW -> PROTOCOL
      */
     func getContactInfo(forContact: String, completion:@escaping(_ results: ContactModel?) -> ())
+    func addToFavorite(contact: ContactModel)
+    func createContact(contactParam: NSMutableDictionary, completion:@escaping(_ results: ContactModel?) -> ())
+    func editContact(contactId: String, param: NSMutableDictionary, completion:@escaping(_ results: ContactModel?) -> ())
 }
 
 //MARK: Interactor -
@@ -50,6 +53,9 @@ protocol ContactDetailInteractorInputProtocol: class {
      * Add here your methods for communication PRESENTER -> INTERACTOR
      */
     func getContactInfo(forContact: String, completion:@escaping(_ results: ContactModel?) -> ())
+    func addToFavorite(contact: ContactModel)
+    func createContact(contactParam: NSMutableDictionary, completion:@escaping(_ results: ContactModel?) -> ())
+    func editContact(contactId: String, param: NSMutableDictionary, completion:@escaping(_ results: ContactModel?) -> ())
 }
 protocol ContactDetailInteractorOutputProtocol: class {
     
@@ -77,6 +83,9 @@ protocol ContactDetailAPIDataManagerInputProtocol: class {
      */
     // Data fetch functions from server
     func getContactInfo(forContact: String, completion:@escaping(_ results: ContactModel?) -> ())
+    func addToFavorite(contact: ContactModel)
+    func createContact(contactParam: NSMutableDictionary, completion:@escaping(_ results: ContactModel?) -> ())
+    func editContact(contactId: String, param: NSMutableDictionary, completion:@escaping(_ results: ContactModel?) -> ())
 }
 
 //MARK: Local -

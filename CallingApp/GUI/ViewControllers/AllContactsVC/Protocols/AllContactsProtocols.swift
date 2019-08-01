@@ -28,7 +28,7 @@ protocol AllContactsWireframeProtocol: class {
     /**
      * Add here your methods for communication PRESENTER -> WIREFRAME
      */
-    func showContactDetail(_ forContact: ContactModel)
+    func showContactDetail(_ forContact: ContactModel, addNewContact : Bool)
 }
 
 //MARK: Presenter -
@@ -37,7 +37,7 @@ protocol AllContactsPresenterProtocol: class {
      * Add here your methods for communication VIEW -> PROTOCOL
      */
     func getAllContacts(completion:@escaping(_ results: [String:[ContactModel]]) -> ())
-    func showContactDetail(_ forContact: ContactModel)
+    func showContactDetail(_ forContact: ContactModel, addNewContact : Bool)
 }
 
 //MARK: Interactor -

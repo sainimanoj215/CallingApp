@@ -26,4 +26,34 @@ class ContactDetailAPIDataManager: ContactDetailAPIDataManagerInputProtocol {
             }
         }
     }
+    
+    func addToFavorite(contact: ContactModel){
+        
+    }
+    
+    func createContact(contactParam: NSMutableDictionary, completion:@escaping(_ results: ContactModel?) -> ()){
+        let api = kCreateContactApi
+        NetworkCommunicationLayer.postDataAPI(apiName: api , contentType: "", params: contactParam) { (response, error, isSuccess) in
+            if isSuccess && response != nil {
+                let contact = ContactModel.init(fromDictionary: response as! [String:Any])
+                completion(contact)
+            }
+            else {
+                completion(nil)
+            }
+        }
+    }
+    
+    func editContact(contactId: String, param: NSMutableDictionary, completion:@escaping(_ results: ContactModel?) -> ()){
+        let api = kUpdateContactInfoApi + contactId + ".json"
+        NetworkCommunicationLayer.putDataAPI(apiName: api , contentType: "", params: param) { (response, error, isSuccess) in
+            if isSuccess && response != nil {
+                let contact = ContactModel.init(fromDictionary: response as! [String:Any])
+                completion(contact)
+            }
+            else {
+                completion(nil)
+            }
+        }
+    }
 }

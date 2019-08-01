@@ -16,3 +16,5 @@ func baseURL() -> String {
 //MARK: - APIS
 let kGetAllContactsApi  =   "/contacts.json"
 let kGetContactInfoApi  =   "/contacts/"
+let kCreateContactApi  =   "/contacts.json"
+let kUpdateContactInfoApi  =   "/contacts/"
